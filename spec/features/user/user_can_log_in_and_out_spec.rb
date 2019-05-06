@@ -56,4 +56,25 @@ describe 'User' do
 
     expect(page).to have_content("Looks like your email or password is invalid")
   end
+
+  describe 'as an admin' do
+    it 'allows me to log in as a user' do
+      admin = create(:admin)
+
+      visit login_path
+
+      fill_in'session[email]', with: admin.email
+      fill_in'session[password]', with: admin.password
+
+      click_on 'Log In'
+
+      expect(current_path).to eq(dashboard_path)
+
+      visit admin_dashboard_path
+
+      expect(current_path).to eq(admin_dashboard_path)
+      expect(page).to have_content("Admin Dashboard")
+    end
+
+  end
 end
