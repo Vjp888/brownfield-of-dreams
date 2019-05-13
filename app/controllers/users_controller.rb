@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
     render locals: {
@@ -11,16 +13,8 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    if user.save
-      activation_email(user)
-      session[:user_id] = user.id
-      flash[:success] = "Logged in as #{user.first_name}"
-      flash[:notice] = 'This account has not yet been activated. Please check your email.'
-      redirect_to dashboard_path
-    else
-      flash[:error] = 'Username already exists'
-      render :new
-    end
+    message = 'Account has not yet been activated. Please check your email.'
+    user_creation(user, message)
   end
 
   private
@@ -34,4 +28,16 @@ class UsersController < ApplicationController
     UserActivatorMailer.activate(user).deliver_now
   end
 
+  def user_creation(user, message)
+    if user.save
+      activation_email(user)
+      session[:user_id] = user.id
+      flash[:success] = "Logged in as #{user.first_name}"
+      flash[:notice] = message
+      redirect_to dashboard_path
+    else
+      flash[:error] = 'Username already exists'
+      render :new
+    end
+  end
 end
