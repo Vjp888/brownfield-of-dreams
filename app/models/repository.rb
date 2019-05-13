@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Repository
-attr_reader :name, :url
+  attr_reader :name, :url
 
   def initialize(data)
     @name = data[:name]

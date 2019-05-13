@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Tutorial < ApplicationRecord
-  has_many :videos, ->  { order(position: :ASC) }
+  has_many :videos, -> { order(position: :ASC) }
   acts_as_taggable_on :tags, :tag_list
   accepts_nested_attributes_for :videos
 
@@ -13,11 +15,11 @@ class Tutorial < ApplicationRecord
 
   def self.bookmarked_by(user)
     joins(videos: :user_videos)
-    .where("user_videos.user_id = ?", user.id)
+      .where('user_videos.user_id = ?', user.id)
   end
 
-  def bookmarked_tutorial_videos(user)
+  def bookmarked_tutorial_videos(_user)
     videos.joins(:user_videos)
-          .order(position: :asc) 
+          .order(position: :asc)
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InviteSenderMailer < ApplicationMailer
   def invite(user, github_user)
     @user = user

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Video < ApplicationRecord
   has_many :user_videos
   has_many :users, through: :user_videos
@@ -7,6 +9,6 @@ class Video < ApplicationRecord
 
   def self.bookmarked_videos(user)
     joins(:user_videos)
-    .where("user_videos.user_id = ?", user.id)
+      .where('user_videos.user_id = ?', user.id)
   end
 end

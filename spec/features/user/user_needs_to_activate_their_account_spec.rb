@@ -29,7 +29,7 @@ RSpec.describe 'as a new user' do
       # And I should see a message that says "Logged in as <SOME_NAME>"
       expect(page).to have_content("Logged in as #{first_name}")
       # And I should see a message that says "This account has not yet been activated. Please check your email."
-      expect(page).to have_content('This account has not yet been activated. Please check your email.')
+      expect(page).to have_content('Account has not yet been activated. Please check your email.')
       expect(page).to have_content('Status: Inactive')
       # As a non-activated user
       # When I check my email for the registration email
