@@ -12,21 +12,21 @@ class WelcomeController < ApplicationController
   private
 
   def tagged_paginator
-    if current_user
-      @tutorials = Tutorial.tagged_with(params[:tag])
+    @tutorials = if current_user
+                   Tutorial.tagged_with(params[:tag])
                            .paginate(page: params[:page], per_page: 5)
-    else
-      @tutorials = Tutorial.non_class_content.tagged_with(params[:tag])
+                 else
+                   Tutorial.non_class_content.tagged_with(params[:tag])
                            .paginate(page: params[:page], per_page: 5)
-    end
+                 end
   end
 
   def untagged_paginator
-    if current_user
-      @tutorials = Tutorial.all.paginate(page: params[:page], per_page: 5)
-    else
-      @tutorials = Tutorial.non_class_content
+    @tutorials = if current_user
+                   Tutorial.all.paginate(page: params[:page], per_page: 5)
+                 else
+                   Tutorial.non_class_content
                            .paginate(page: params[:page], per_page: 5)
-    end
+                 end
   end
 end
