@@ -25,6 +25,7 @@ gem 'active_model_serializers'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'will_paginate'
+gem 'hashids'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 

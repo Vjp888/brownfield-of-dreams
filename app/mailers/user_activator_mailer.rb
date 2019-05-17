@@ -1,7 +1,7 @@
 class UserActivatorMailer < ApplicationMailer
   def activate(user)
-    # binding.pry
-    @user = user
+    hashids = Hashids.new("saxton hale")
+    @id = hashids.encode(user.id)
     mail(to: user.email, subject: 'Activate your Turing Tutorial Account')
   end
 end

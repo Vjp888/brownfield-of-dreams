@@ -35,7 +35,9 @@ RSpec.describe 'as a new user' do
       # When I check my email for the registration email
       # I should see a message that says "Visit here to activate your account."
       # And when I click on that link
-      visit activation_path(inactive_user)
+      hashids = Hashids.new("saxton hale")
+      id = hashids.encode(inactive_user.id)
+      visit activation_path(id)
       active_user = User.last
       expect(page).to have_content('Thank you! Your account is now activated.')
       # change status to active for better readability/logic
