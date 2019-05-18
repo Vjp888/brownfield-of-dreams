@@ -11,12 +11,4 @@ class ApplicationController < ActionController::Base
   def four_oh_four
     render status: 404, file: "#{Rails.root}/public/404.html"
   end
-
-  def admin?
-    if current_user.role == 'admin'
-      true
-    elsif current_user.role == 'default'
-      false
-    end
-  end
 end
