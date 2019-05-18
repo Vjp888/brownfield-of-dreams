@@ -22,4 +22,23 @@ RSpec.describe 'new tutorial spec' do
       expect(tutorial.thumbnail).to eq('https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg')
     end
   end
+
+  context 'as a non admin user' do
+    it 'sees a 404' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit new_admin_tutorial_path
+
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+  end
+
+  context 'as a visitor' do
+    it 'sees a 404' do
+      visit new_admin_tutorial_path
+
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+  end
 end

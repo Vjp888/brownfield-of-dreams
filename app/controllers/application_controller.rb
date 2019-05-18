@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
   end
 
   def four_oh_four
-    raise ActionController::RoutingError.new('Not Found')
+    render status: 404, file: "#{Rails.root}/public/404.html"
+  end
+
+  def admin?
+    if current_user.role == 'admin'
+      true
+    elsif current_user.role == 'default'
+      false
+    end
   end
 end
