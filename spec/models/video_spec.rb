@@ -12,17 +12,6 @@ RSpec.describe Video, type: :model do
   end
 
   describe 'class methods' do
-    xit ".nillify" do
-    tutorial = create(:tutorial)
-    valid_position_video = create(:video, tutorial: tutorial, position: 1)
-    invalid_position_video = create(:video, tutorial: tutorial, position: nil)
-
-    Video.nillify
-
-    expect(valid_position_video.position).to eq(1)
-    expect(invalid_position_video.position).to eq(2)
-    end
-
     it '.bookmarked_videos' do
       tutorial1 = create(:tutorial)
       tutorial2 = create(:tutorial)
