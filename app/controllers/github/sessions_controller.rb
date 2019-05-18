@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Github::SessionsController < ApplicationController
   def create
     omniauth_handshake = request.env['omniauth.auth']

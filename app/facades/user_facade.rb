@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserFacade
   attr_reader :first_name, :last_name, :email, :friends
 
@@ -35,9 +37,7 @@ class UserFacade
   end
 
   def find_friends(friends)
-    friend_list = friends.map do |friend|
-      friend.followed_user_id
-    end
+    friend_list = friends.map(&:followed_user_id)
     User.find(friend_list)
   end
 
