@@ -39,14 +39,15 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'foundation-rails'
   gem 'launchy'
+  gem 'mailcatcher'
   gem 'pry'
   gem 'rspec-rails'
   gem 'rubocop', '~> 0.68.1', require: false
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'vcr'
   gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'github/sessions#create'
 
   get '/dashboard', to: 'users#show'
-  get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
   # Is this being used?

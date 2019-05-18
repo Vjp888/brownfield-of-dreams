@@ -12,7 +12,6 @@ RSpec.describe Video, type: :model do
   end
 
   describe 'class methods' do
-
     it '.bookmarked_videos' do
       tutorial1 = create(:tutorial)
       tutorial2 = create(:tutorial)
